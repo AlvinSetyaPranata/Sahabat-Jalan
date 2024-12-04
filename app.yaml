@@ -6,6 +6,6 @@ env_variables:
   DJANGO_SETTINGS_MODULE: "server.server.server.settings"
   GOOGLE_APPLICATION_CREDENTIALS: "server/sahabat-jalan-a94a153435dc.json"  # Optional, if needed for GCS access
 
-instance_class: E2  # Choose an instance class depending on your needs
+instance_class: F2  # Choose an instance class depending on your needs
 
 env: flex  # Use flexible environment for more flexibility
