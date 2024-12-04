@@ -1,5 +1,7 @@
 runtime: python312
 
+entrypoint: gunicorn -b :$PORT server.server.server.wsgi
+
 
 handlers:
 - url: /static
