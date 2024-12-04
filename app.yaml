@@ -1,4 +1,4 @@
-runtime: python310  # Or another supported Python version
+runtime: python  # Or another supported Python version
 
 entrypoint: gunicorn -b :$PORT server.server.server.wsgi
 
