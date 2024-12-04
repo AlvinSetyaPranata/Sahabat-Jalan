@@ -9,6 +9,3 @@ env_variables:
 instance_class: E2  # Choose an instance class depending on your needs
 
 env: flex  # Use flexible environment for more flexibility
-automatic_scaling:
-  min_instances: 1
-  max_instances: 5
