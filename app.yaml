@@ -9,3 +9,7 @@ env_variables:
 instance_class: F2  # Choose an instance class depending on your needs
 
 env: flex  # Use flexible environment for more flexibility
+
+runtime_config:
+    operating_system: "ubuntu22"
+    runtime_version: "3.12"
