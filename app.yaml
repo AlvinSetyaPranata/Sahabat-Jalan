@@ -1,14 +1,9 @@
-runtime: python  # Or another supported Python version
+runtime: python  
 
-entrypoint: gunicorn -b :$PORT server.server.server.wsgi
 
-env_variables:
-  DJANGO_SETTINGS_MODULE: "server.server.server.settings"
+handlers:
+- url: /static
+  static_dir: static/
 
-instance_class: F2  # Choose an instance class depending on your needs
-
-env: flex  # Use flexible environment for more flexibility
-
-runtime_config:
-    operating_system: "ubuntu22"
-    runtime_version: "3.12"
+- url: /.*
+  script: auto
