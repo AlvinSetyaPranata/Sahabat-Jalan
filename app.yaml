@@ -1,0 +1,14 @@
+runtime: python310  # Or another supported Python version
+
+entrypoint: gunicorn -b :$PORT server.server.server.wsgi
+
+env_variables:
+  DJANGO_SETTINGS_MODULE: "server.server.server.settings"
+  GOOGLE_APPLICATION_CREDENTIALS: "server/sahabat-jalan-a94a153435dc.json"  # Optional, if needed for GCS access
+
+instance_class: E2  # Choose an instance class depending on your needs
+
+env: flex  # Use flexible environment for more flexibility
+automatic_scaling:
+  min_instances: 1
+  max_instances: 5
