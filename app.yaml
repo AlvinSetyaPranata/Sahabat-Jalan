@@ -1,6 +1,6 @@
 runtime: python312
 
-entrypoint: gunicorn -b :$PORT server.server.server.wsgi:application
+entrypoint: gunicorn server.server.server.wsgi:application --bind 0.0.0.0:8000
 
 env_variables:
   DJANGO_SETTINGS_MODULE: "server.server.server.settings"
