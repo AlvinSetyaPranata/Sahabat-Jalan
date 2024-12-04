@@ -1,4 +1,4 @@
-runtime: python3
+runtime: python312
 
 
 handlers:
@@ -7,9 +7,4 @@ handlers:
 
 - url: /.*
   script: auto
-
-
-runtime_config:
-    operating_system: "ubuntu22"
-    runtime_version: "3.12"
 
