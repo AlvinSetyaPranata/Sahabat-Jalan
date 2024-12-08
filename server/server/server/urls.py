@@ -19,6 +19,7 @@ from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView
 from destinations.views import (
     DestinationView,
+    DestinationDetailView,
     CategoryView
 )
 
@@ -26,6 +27,7 @@ from destinations.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/destinations/', DestinationView.as_view()),
+    path('api/destinations/<int:id>/', DestinationDetailView.as_view()),
     path('api/categories/', CategoryView.as_view()),
     path('docs/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('docs/api/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),

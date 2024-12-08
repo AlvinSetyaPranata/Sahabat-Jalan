@@ -15,6 +15,7 @@ class Destination(models.Model):
     location = models.CharField(max_length=255)
     description = models.TextField()
     guide = models.TextField()
+    image = models.CharField(max_length=255, null=True, blank=True)
     best_time_visit = models.CharField(max_length=100)
     worst_time_visit = models.CharField(max_length=100)
     category_id = models.ManyToManyField(Category)

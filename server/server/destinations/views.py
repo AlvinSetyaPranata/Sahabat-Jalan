@@ -1,4 +1,7 @@
 from rest_framework.views import APIView
+from rest_framework.status import (
+    HTTP_404_NOT_FOUND
+)
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema
 from .models import (
@@ -7,6 +10,7 @@ from .models import (
 )
 from .serializers import (
     DestinationSerializer,
+    DestinationDetailSerializer,
     CategorySerializer
 )
 
@@ -23,6 +27,27 @@ class DestinationView(APIView):
         serializer = DestinationSerializer(Destination.objects.all(), many=True)
 
         return Response(serializer.data)
+    
+
+class DestinationDetailView(APIView):
+
+    @extend_schema(responses={
+        200: DestinationDetailSerializer
+    }, request=DestinationDetailSerializer)
+
+
+    def get(self, _, id):
+        
+        try:
+            instance = Destination.objects.get(pk=id)
+            serializer = DestinationDetailSerializer(instance)
+
+        except:
+            return Response({}, status=HTTP_404_NOT_FOUND)
+
+        return Response(serializer.data)
+
+
 
 
 
