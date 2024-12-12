@@ -26,7 +26,7 @@ class DestinationView(APIView):
     def get(self, _):
         serializer = DestinationSerializer(Destination.objects.all(), many=True)
 
-        return Response(serializer.data)
+        return Response({ "data" : serializer.data})
     
 
 class DestinationDetailView(APIView):
@@ -45,7 +45,7 @@ class DestinationDetailView(APIView):
         except:
             return Response({}, status=HTTP_404_NOT_FOUND)
 
-        return Response(serializer.data)
+        return Response({ "data" : serializer.data})
 
 
 
@@ -59,7 +59,7 @@ class CategoryView(APIView):
     def get(self, _):
         serializer = CategorySerializer(Category.objects.all(), many=True)
 
-        return Response(serializer.data)
+        return Response({ "data" : serializer.data})
 
 
 

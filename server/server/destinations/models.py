@@ -1,5 +1,9 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 
+
+def get_default_list_value():
+    return []
 
 class Category(models.Model):
     name = models.CharField(max_length=20, unique=True)
@@ -7,11 +11,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-    
-
-class Preview(models.Model):
-    place_name = models.CharField(max_length=255)
-    image_url = models.CharField(max_length=500)
 
 
 class Destination(models.Model):
@@ -19,8 +18,8 @@ class Destination(models.Model):
     location = models.CharField(max_length=255)
     description = models.TextField()
     guide = models.TextField()
-    image = models.CharField(max_length=255, null=True, blank=True)
-    previews_id = models.ManyToManyField(Preview)
+    image = models.URLField(null=True, blank=True)
+    previews = ArrayField(models.URLField(), default=get_default_list_value, blank=True)
     best_time_visit = models.CharField(max_length=100)
     worst_time_visit = models.CharField(max_length=100)
     category_id = models.ManyToManyField(Category)

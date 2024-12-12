@@ -1,11 +1,13 @@
 from django.contrib import admin
 from .models import (
     Destination,
-    Category,
-    Preview
+    Category
 )
+from .forms import DestinationForm
+
+class DestinationAdmin(admin.ModelAdmin):
+    form = DestinationForm
 
 # Register your models here.
-admin.site.register(Destination)
 admin.site.register(Category)
-admin.site.register(Preview)
+admin.site.register(Destination, DestinationAdmin)

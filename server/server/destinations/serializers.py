@@ -1,10 +1,11 @@
 from rest_framework.serializers import (
-    ModelSerializer
+    ModelSerializer,
+    ListField,
+    CharField
 )
 from .models import (
     Destination,
     Category,
-    Preview
 )
 
 
@@ -13,14 +14,9 @@ class CategorySerializer(ModelSerializer):
         model = Category
         fields = '__all__'
 
-class PreviewSerializer(ModelSerializer):
-    class Meta:
-        model = Preview
-        fields = '__all__'
-
 class DestinationDetailSerializer(ModelSerializer):
     category_id = CategorySerializer(read_only=True, many=True)
-    previews_id = PreviewSerializer(read_only=True, many=True)
+    previews = ListField(child=CharField())
 
     class Meta:
         model = Destination
