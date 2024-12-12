@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.status import (
-    HTTP_404_NOT_FOUND
+    HTTP_404_NOT_FOUND,
+    HTTP_400_BAD_REQUEST
 )
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema
@@ -11,7 +12,8 @@ from .models import (
 from .serializers import (
     DestinationSerializer,
     DestinationDetailSerializer,
-    CategorySerializer
+    CategorySerializer,
+    SearchSerializer
 )
 
 
@@ -51,11 +53,17 @@ class DestinationDetailView(APIView):
 class SearchView(APIView):
     def get(self, req):
 
-        query_name = req.GET.getlist("q").strip('"\'')
+        query_name = req.GET.getlist("q")
+        
+        if not query_name:
+            return Response({ "data" : []}, status=HTTP_400_BAD_REQUEST)
+
+
+        query_name = query_name[0].strip('"\'')
 
         try:
             instance = Destination.objects.get(name=query_name)
-            serializer = DestinationDetailSerializer(instance)
+            serializer = SearchSerializer(instance)
 
         except:
             return Response({ "data" : [] }, status=HTTP_404_NOT_FOUND)
