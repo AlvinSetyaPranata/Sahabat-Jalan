@@ -32,4 +32,4 @@ class DestinationSerializer(ModelSerializer):
 class SearchSerializer(ModelSerializer):
     class Meta:
         model = Destination
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'rating']
