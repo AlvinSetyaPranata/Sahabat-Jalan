@@ -51,14 +51,10 @@ class DestinationDetailView(APIView):
 class SearchView(APIView):
     def get(self, req):
 
-        print(req.GET.getlist("name"))
-
-        return Response()
-
-        query_name = req.GET.getlist("q")
+        query_name = req.GET.getlist("q").strip('"\'')
 
         try:
-            instance = Destination.objects.get(name=name)
+            instance = Destination.objects.get(name=query_name)
             serializer = DestinationDetailSerializer(instance)
 
         except:

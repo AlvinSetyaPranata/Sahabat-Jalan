@@ -26,4 +26,4 @@ num_recommendations = 3
 recommendations = get_recommendations(user_vec, places_df, model, scaler_user, scaler_item, scaler_target, num_recommendations)
 
 # Menampilkan hasil rekomendasi, hasilnya berupa id tempat wisata
-print(recommendations)
+print(str(recommendations))

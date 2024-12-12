@@ -18,6 +18,7 @@ class Destination(models.Model):
     location = models.CharField(max_length=255)
     description = models.TextField()
     guide = models.TextField()
+    rating = models.IntegerField(default=0)
     image = models.URLField(null=True, blank=True)
     previews = ArrayField(models.URLField(), default=get_default_list_value, blank=True)
     best_time_visit = models.CharField(max_length=100)

@@ -27,3 +27,9 @@ class DestinationSerializer(ModelSerializer):
     class Meta:
         model = Destination
         fields = ['id', 'name', 'location', 'image']
+
+
+class SearchSerializer(ModelSerializer):
+    class Meta:
+        model = Destination
+        fields = ['id', 'name']
