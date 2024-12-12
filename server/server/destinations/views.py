@@ -43,10 +43,28 @@ class DestinationDetailView(APIView):
             serializer = DestinationDetailSerializer(instance)
 
         except:
-            return Response({}, status=HTTP_404_NOT_FOUND)
+            return Response({ "data" : []}, status=HTTP_404_NOT_FOUND)
 
         return Response({ "data" : serializer.data})
 
+
+class SearchView(APIView):
+    def get(self, req):
+
+        print(req.GET.getlist("name"))
+
+        return Response()
+
+        query_name = req.GET.getlist("q")
+
+        try:
+            instance = Destination.objects.get(name=name)
+            serializer = DestinationDetailSerializer(instance)
+
+        except:
+            return Response({ "data" : [] }, status=HTTP_404_NOT_FOUND)
+        
+        return Response({ "data" : serializer.data })
 
 
 
