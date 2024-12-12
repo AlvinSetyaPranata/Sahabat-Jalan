@@ -53,4 +53,4 @@ def get_recommendations(user_vec, places_df, model, scaler_user, scaler_item, sc
     # Mengurutkan berdasarkan rating tertinggi
     result_df_sorted = result_df.sort_values(by='Predicted_Rating', ascending=False)
 
-    return result_df_sorted['Place_Id'].head(num_recommendation)  # Menampilkan n rekomendasi teratas
+    return result_df_sorted['Place_Name'].head(num_recommendation)  # Menampilkan n rekomendasi teratas
